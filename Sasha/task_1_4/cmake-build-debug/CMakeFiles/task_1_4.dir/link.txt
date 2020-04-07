@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/task_1_4.dir/main.cpp.o  -o task_1_4 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f3c1bb9b-7d2c-46c9-9257-6522d786713f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ProjectId" id="1ZzYy5w29MXpws5rRPHLU1XmkIy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Task_4_2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3c1bb9b-7d2c-46c9-9257-6522d786713f" name="Default Changelist" comment="" />
+      <created>1585843640180</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585843640180</updated>
+      <workItem from="1585843641698" duration="703000" />
+      <workItem from="1585846221616" duration="2006000" />
+      <workItem from="1585911358416" duration="778000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="294" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586102835891">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state x="294" y="311" width="424" height="484" key="FileChooserDialogImpl/63.27.1857.1053@63.27.1857.1053" timestamp="1586102835891" />
+    <state x="63" y="187" key="SettingsEditor" timestamp="1585846139241">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state x="63" y="187" key="SettingsEditor/63.27.1857.1053@63.27.1857.1053" timestamp="1585846139241" />
+    <state x="167" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1585911363193">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state x="167" y="381" key="com.intellij.ide.util.TipDialog/63.27.1857.1053@63.27.1857.1053" timestamp="1585911363193" />
+  </component>
+</project>

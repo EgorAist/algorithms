@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="task_4_2" targetName="task_4_2" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de2e2af2-bdbe-4fd7-a818-4e5ebc007321" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1ZwXepBMc2GQkR0n8X6i8arQUf4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="OCFindUsagesOptions.isSearchForTextOccurrences" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Task_7_2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="task_4_2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="task_4_2" TARGET_NAME="task_4_2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="task_4_2" RUN_TARGET_NAME="task_4_2">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de2e2af2-bdbe-4fd7-a818-4e5ebc007321" name="Default Changelist" comment="" />
+      <created>1585751227284</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585751227284</updated>
+      <workItem from="1585751228685" duration="2967000" />
+      <workItem from="1586017653638" duration="599000" />
+      <workItem from="1586092956030" duration="599000" />
+      <workItem from="1586102838853" duration="9302000" />
+      <workItem from="1586248874776" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="651" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1586181217807">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state x="651" y="311" width="424" height="484" key="FileChooserDialogImpl/63.27.1857.1053@63.27.1857.1053" timestamp="1586181217807" />
+    <state width="1009" height="264" key="GridCell.Tab.0.bottom" timestamp="1586176668046">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="264" key="GridCell.Tab.0.bottom/63.27.1857.1053@63.27.1857.1053" timestamp="1586176668046" />
+    <state width="1785" height="263" key="GridCell.Tab.0.bottom/79.34.1841.1046@79.34.1841.1046" timestamp="1585752588392" />
+    <state width="1009" height="264" key="GridCell.Tab.0.center" timestamp="1586176668046">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="264" key="GridCell.Tab.0.center/63.27.1857.1053@63.27.1857.1053" timestamp="1586176668046" />
+    <state width="1785" height="263" key="GridCell.Tab.0.center/79.34.1841.1046@79.34.1841.1046" timestamp="1585752588391" />
+    <state width="1009" height="264" key="GridCell.Tab.0.left" timestamp="1586176668045">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="264" key="GridCell.Tab.0.left/63.27.1857.1053@63.27.1857.1053" timestamp="1586176668045" />
+    <state width="1785" height="263" key="GridCell.Tab.0.left/79.34.1841.1046@79.34.1841.1046" timestamp="1585752588391" />
+    <state width="1009" height="264" key="GridCell.Tab.0.right" timestamp="1586176668046">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="264" key="GridCell.Tab.0.right/63.27.1857.1053@63.27.1857.1053" timestamp="1586176668046" />
+    <state width="1785" height="263" key="GridCell.Tab.0.right/79.34.1841.1046@79.34.1841.1046" timestamp="1585752588391" />
+    <state width="1009" height="88" key="GridCell.Tab.1.bottom" timestamp="1586176250311">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="88" key="GridCell.Tab.1.bottom/63.27.1857.1053@63.27.1857.1053" timestamp="1586176250311" />
+    <state width="1009" height="88" key="GridCell.Tab.1.center" timestamp="1586176250311">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="88" key="GridCell.Tab.1.center/63.27.1857.1053@63.27.1857.1053" timestamp="1586176250311" />
+    <state width="1009" height="88" key="GridCell.Tab.1.left" timestamp="1586176250311">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="88" key="GridCell.Tab.1.left/63.27.1857.1053@63.27.1857.1053" timestamp="1586176250311" />
+    <state width="1009" height="88" key="GridCell.Tab.1.right" timestamp="1586176250311">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state width="1009" height="88" key="GridCell.Tab.1.right/63.27.1857.1053@63.27.1857.1053" timestamp="1586176250311" />
+    <state x="736" y="196" width="501" height="713" key="refactoring.ChangeSignatureDialog" timestamp="1586105370140">
+      <screen x="63" y="27" width="1857" height="1053" />
+    </state>
+    <state x="736" y="196" width="501" height="713" key="refactoring.ChangeSignatureDialog/63.27.1857.1053@63.27.1857.1053" timestamp="1586105370140" />
+  </component>
+</project>

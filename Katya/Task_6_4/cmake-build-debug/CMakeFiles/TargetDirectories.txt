@@ -1,0 +1,3 @@
+/home/ekaterina/CLionProjects/A_i_SD/HW__1/Task_6_4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ekaterina/CLionProjects/A_i_SD/HW__1/Task_6_4/cmake-build-debug/CMakeFiles/task_6_4.dir
+/home/ekaterina/CLionProjects/A_i_SD/HW__1/Task_6_4/cmake-build-debug/CMakeFiles/edit_cache.dir
