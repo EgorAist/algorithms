@@ -1,4 +1,6 @@
-/*
+/* Богомолова Мария, АПО-13
+    Задача 3_3
+
     Реализовать очередь с помощью двух стеков. Использовать стек, реализованный с помощью динамического буфера.
     Требования: Очередь должна быть реализована в виде класса. Стек тоже должен быть реализован в виде класса.
 
@@ -18,8 +20,8 @@
 
 #include <iostream>
 
-#define MIN_SIZE 3
-#define MEM_INCREASE 2
+#define INITIAL_SIZE 10
+#define INCREASE_INDEX 2
 
 template <typename T>
 class Stack {
@@ -35,19 +37,19 @@ public:
 
     bool isEmpty();
 
-    void print_stack();
-
 private:
-    T *buffer;
+    T *buffer; //буфер для хранения данных
 
-    size_t capacity;
+    size_t capacity; //вместимость буфера
 
-    size_t size;
+    size_t size; //реальный размер буфера (количество хранимых элементов)
 
-    int head;
+    int head; //значение "головы"
 
     void resize();
 };
+
+
 
 template <typename T>
 class Queue {
@@ -60,173 +62,16 @@ public:
 
     T dequeue();
 
-    void print_queue();
-
 private:
-    Stack<T> leftStack, rightStack;
+    Stack<T> leftStack, rightStack; //правый и левый стек для реализации очереди на 2х стеках
 };
 
 
-//////Queue methods implemetation
-template <typename T>
-Queue<T>::Queue() = default; /*{
-   *//* leftStack();
-    rightStack();*//*
-}*/
-
-template <typename T>
-Queue<T>::~Queue() = default; /*{
-    *//*~leftStack();
-    ~rightStack();*//*
-}*/
-
-template <typename T>
-void Queue<T>::enqueue(const T &element) {
-    leftStack.push(element);
-}
-
-
-template <typename T>
-T Queue<T>::dequeue() {
-    if (!rightStack.isEmpty())
-        return rightStack.pop();
-    else {
-        while (!leftStack.isEmpty())
-            rightStack.push(leftStack.pop());
-        return rightStack.pop();
-    }
-}
-
-template <typename T>
-void Queue<T>::print_queue() {
-    std::cout << "leftStack: " << std::endl;
-    leftStack.print_stack();
-
-    std::cout << "rightStack: " << std::endl;
-    rightStack.print_stack();
-}
-
-/////Stack methods implementation
-template <typename T>
-Stack<T>::Stack() {
-    size = 0;
-    head = 0;
-    capacity = MIN_SIZE;
-    buffer = new T[MIN_SIZE];
-}
-
-
-template <typename T>
-Stack<T>::~Stack() {
-    delete [] buffer;
-}
-
-
-template <typename T>
-void Stack<T>::push(const T &element) {
-    if (head == capacity - 1)
-        resize();
-
-    head++;
-    buffer[head] = element;
-    size++;
-}
-
-template <typename T>
-T Stack<T>::pop() {
-    if (isEmpty())
-        return -1;
-
-    T ret_val = buffer[head];
-    head--;
-    size--;
-    return ret_val;
-}
-
-template <typename T>
-bool Stack<T>::isEmpty() {
-    return !size;
-}
-
-
-template <typename T>
-void Stack<T>::resize() {
-    size_t newCapacity = capacity * MEM_INCREASE;
-    T *tmp = new T[newCapacity];
-
-    std::copy(buffer, buffer + head + 1, tmp);
-
-    capacity = newCapacity;
-    delete [] buffer;
-    buffer = tmp;
-}
-
-template <typename T>
-void Stack<T>::print_stack() {
-    for (int i = 0; i < capacity; i++) {
-        if (i <= size)
-            std::cout << " |" << buffer[i];
-        else
-            std::cout << " |";
-    }
-
-    std::cout << std::endl;
-}
-
-
-
 int main() {
-
-    /*for testing stack
-     *
-     * Stack<int> stack;
-
-    int n = 0;
-    int cmd = 0;
-    int element = 0;
-    int ret_pop = 0;
-
-    bool flag = true;
-
-    std::cin >> n;
-    if (!n)
-        return 0;
-
-    for (size_t i = 0; i < n; i++) {
-        std::cin >> cmd >> element;
-
-        switch (cmd) {
-            case 1:
-                stack.push(element);
-                break;
-            case 2:
-                ret_pop = stack.pop();
-                std::cout << "ret pop " << ret_pop << std::endl;
-                if (element != ret_pop)
-                    flag = false;
-                break;
-            default:
-                break;
-        }
-        stack.print_stack();
-    }
-
-    if (flag)
-        std::cout << "YES";
-    else
-        std::cout << "NO";
-    return 0;
-
-    a = 2 - pop front
-    a = 3 - push back
-
-     */
-
-
     Queue<int> queue;
 
     int n = 0;
-    int cmd = 0;
+    int cmd = 0; //считываемая команда пользователя
     int element = 0;
     int ret_pop = 0;
 
@@ -239,20 +84,19 @@ int main() {
     for (size_t i = 0; i < n; i++) {
         std::cin >> cmd >> element;
 
+        //в зависимости от команды пользователя, вызываем тот или иной метод
         switch (cmd) {
             case 3:
                 queue.enqueue(element);
                 break;
             case 2:
                 ret_pop = queue.dequeue();
-                //std::cout << "ret pop " << ret_pop << std::endl;
                 if (element != ret_pop)
-                    flag = false;
+                    flag = false; //извлеченное значение не соответствует введенному
                 break;
             default:
                 break;
         }
-        // queue.print_queue();
     }
 
     if (flag)
@@ -260,4 +104,101 @@ int main() {
     else
         std::cout << "NO";
     return 0;
+}
+
+//----------------------------------------------------
+// реализация очереди
+
+template <typename T>
+Queue<T>::Queue() = default;
+
+template <typename T>
+Queue<T>::~Queue() = default;
+
+//добавление нового элемента в очередь
+template <typename T>
+void Queue<T>::enqueue(const T &element) {
+    //добавляем элемент в левый стек
+    leftStack.push(element);
+}
+
+//извлечение элемента из очереди
+template <typename T>
+T Queue<T>::dequeue() {
+    //если в правом стеке что-либо хранится,
+    //то последний элемент в очереди = последнему элементу в правом стеке
+    if (!rightStack.isEmpty())
+        return rightStack.pop();
+    else {
+        //если правый стек пуст, то "переливаем" элементы из левого стека в правый,
+        //после чего достает элемент
+        while (!leftStack.isEmpty())
+            rightStack.push(leftStack.pop());
+        return rightStack.pop();
+    }
+}
+
+//------------------------------------------------------------------
+//реализация стека
+
+//конструктор стека
+template <typename T>
+Stack<T>::Stack() {
+    size = 0;
+    head = 0;
+    capacity = INITIAL_SIZE; //вместимость буфера для хранения стека
+    buffer = new T[INITIAL_SIZE]; //реальный размер буфера (количество хранимых в нем элементов)
+}
+
+//деструктор стека
+template <typename T>
+Stack<T>::~Stack() {
+    delete [] buffer;
+}
+
+//добавление элемента в стен
+template <typename T>
+void Stack<T>::push(const T &element) {
+    //в случае, если место в буфере заканчивается, изменяем размер буфера путем выделения памяти
+    if (head == capacity - 1)
+        resize();
+
+    //добавление нового элемента
+    head++;
+    buffer[head] = element;
+    size++;
+}
+
+//извлечение элемента из стека
+template <typename T>
+T Stack<T>::pop() {
+    //из пустого стека вернется значение -1
+    if (isEmpty())
+        return -1;
+
+    //иначе извлекаем значение и уменьшаем количество хранимых элементов
+    T ret_val = buffer[head];
+    head--;
+    size--;
+    return ret_val;
+}
+
+//проверка стека на пустоту
+template <typename T>
+bool Stack<T>::isEmpty() {
+    return !size;
+}
+
+//изменение размера стека в случае недостатка в памяти
+template <typename T>
+void Stack<T>::resize() {
+    size_t newCapacity = capacity * INCREASE_INDEX;
+    T *tmp = new T[newCapacity]; //перевыделяем память
+
+    std::copy(buffer, buffer + head + 1, tmp); //копируем содержимое
+
+    //присваиваем новые значения полям объекта
+    capacity = newCapacity;
+    delete [] buffer;
+    buffer = tmp;
 }
