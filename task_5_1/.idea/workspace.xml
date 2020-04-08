@@ -11,7 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2d3a179-b709-4dd4-832e-d5a8f007b03d" name="Default Changelist" comment="" />
+    <list default="true" id="e2d3a179-b709-4dd4-832e-d5a8f007b03d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_7_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_7_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_7_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_7_3/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +61,7 @@
       <workItem from="1585763997099" duration="2492000" />
       <workItem from="1586017651532" duration="599000" />
       <workItem from="1586092955820" duration="599000" />
-      <workItem from="1586330698588" duration="599000" />
+      <workItem from="1586330698588" duration="1162000" />
     </task>
     <servers />
   </component>

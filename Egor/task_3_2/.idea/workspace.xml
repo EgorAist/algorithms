@@ -14,15 +14,7 @@
     <list default="true" id="129bbf85-fb16-4c7c-bf91-c782a6d8934c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_1_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_1_3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_1_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_1_4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_2_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_2_2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_2_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_2_4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_4_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_4_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_4_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_4_3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../task_5_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_5_1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_6_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_6_2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../task_6_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_6_4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../task_7_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_7_2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../task_7_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../task_7_3/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -72,7 +64,7 @@
       <workItem from="1585767183006" duration="8719000" />
       <workItem from="1585820692670" duration="1424000" />
       <workItem from="1586103029632" duration="3435000" />
-      <workItem from="1586330730699" duration="4028000" />
+      <workItem from="1586330730699" duration="4625000" />
     </task>
     <servers />
   </component>

@@ -49,11 +49,11 @@ public:
 
 private:
     // направление элементов в деке слева направо
-    int tail; // хвостовой элемент (количество элементов - 1)
-    int head; // головной элемент (0)
+    int tail_element; // хвостовой элемент (количество элементов - 1)
+    int head_element; // головной элемент (0)
 
-    T *buffer;       // буфер для хранения элементов
-    size_t capacity; // вместимость буфера
+    T *buf;          // буфер для хранения элементов
+    size_t buf_size; // вместимость буфера
     size_t size;     // количество элементов в деке
                      // (количество занятых элементов в буфере)
     
@@ -61,12 +61,12 @@ private:
 };
 
 template <typename T>
-Deque<T>::Deque(): head{0}, tail{0} 
+Deque<T>::Deque(): head_element{0}, tail_element{0} 
 {
     // выделение памяти под буфер
-    buffer = new T[MIN_SIZE];
+    buf = new T[MIN_SIZE];
     // вместимость - количество элементов в буфере
-    capacity = MIN_SIZE;
+    buf_size = MIN_SIZE;
     // количество элементов в деке - 0
     size = 0;
 }
@@ -75,7 +75,7 @@ template <typename T>
 Deque<T>::~Deque() 
 {
     // очистка памяти
-    delete []buffer;
+    delete []buf;
 }
 
 template <typename T>
@@ -90,15 +90,15 @@ template <typename T>
 void Deque<T>::pushBack(const T &element) 
 {
     // проверка на то, что в буфере еще осталось место
-    if (size + 1 > capacity)
+    if (size + 1 > buf_size)
         resize();
 
     // положить элемент в конец
-    buffer[tail] = element;
+    buf[tail_element] = element;
     // увеличить количество реально занятого пространства в буфере
     size++;
     // так как дек зациклен, нужно искать остаток от деления
-    tail = (tail + 1) % capacity;
+    tail_element = (tail_element + 1) % buf_size;
 }
 
 
@@ -106,13 +106,13 @@ template <typename T>
 void Deque<T>::pushFront(const T &element)
 {
     // проверка на то, что в буфере еще осталось место
-    if (size + 1 > capacity)
+    if (size + 1 > buf_size)
         resize();
 
     // изменения положения головного элемента
-    head = (head - 1 + capacity) % capacity;
+    head_element = (head_element - 1 + buf_size) % buf_size;
     // кладем новый элемент в начало
-    buffer[head] = element;
+    buf[head_element] = element;
     // увеличить количество реально занятого пространства в буфере
     size++;
 }
@@ -126,9 +126,9 @@ T Deque<T>::popFront()
         return -1;
 
     // возвращение головного элемента
-    T return_element = buffer[head];
+    T return_element = buf[head_element];
     // изменение положения головного элемента
-    head = (head + 1) % capacity;
+    head_element = (head_element + 1) % buf_size;
     // изменения размера дека
     size--;
     // возвращение нужного элемента
@@ -144,11 +144,11 @@ T Deque<T>::popBack()
         return -1;
 
     // параресчет хвостового элемента
-    tail = (tail - 1 + capacity) % capacity;
+    tail_element = (tail_element - 1 + buf_size) % buf_size;
     // изменение размера дека
     size--;
     // возвращение нужного элемента
-    return buffer[tail];
+    return buf[tail_element];
 }
 
 
@@ -157,35 +157,35 @@ void Deque<T>::resize()
 {
     // новое количество элементов в буфере -
     // это старое количество * 2
-    size_t new_capacity = capacity * MEM_INCREASE;
+    size_t new_buf_size = buf_size * MEM_INCREASE;
 
     // выделяем память под новый буфер
-    T *tmp = new T[new_capacity];
+    T *tmp = new T[new_buf_size];
 
     // если головной элемент меньше, чем хвостовой
-    if (head < tail) 
-        copy(buffer + head, buffer + tail, tmp + head);
+    if (head_element < tail_element) 
+        copy(buf + head_element, buf + tail_element, tmp + head_element);
     else {
-        /* Поскольку буфер зацикленный, tail может распологаться в начале массива,
-         * соответственно он может быть меньше head. В этом случае расширяем зацикленный
+        /* Поскольку буфер зацикленный, tail_element может распологаться в начале массива,
+         * соответственно он может быть меньше head_element. В этом случае расширяем зацикленный
          * буфер и поэтому копируем его частями */
-        copy(buffer + head, buffer + capacity, tmp + head);
-        copy(buffer, buffer + tail, tmp + capacity);
-        tail = capacity + tail;
+        copy(buf + head_element, buf + buf_size, tmp + head_element);
+        copy(buf, buf + tail_element, tmp + buf_size);
+        tail_element = buf_size + tail_element;
     }
 
     // изменяем количество элементов
-    capacity = new_capacity;
+    buf_size = new_buf_size;
     // очищаем буфер
-    delete []buffer;
+    delete []buf;
     // теперь буфер реалицированный
-    buffer = tmp;
+    buf = tmp;
 }
 
 int main()
 {
     // создаем объект класса дек
-    Deque<int> deq;
+    Deque<int> deque;
 
     // количество элементов
     int n = 0;
@@ -193,41 +193,41 @@ int main()
     // проверка условий
     assert(n >= 0);
 
-    bool flag = true;   // флаг для проверка корректности
-    int cmd = 0;        // код команды
-    int element = 0;    // элемент, с которым нужно выполнять действия
-    int return_pop = 0; // возвращаемый элемент
+    bool is_correct = true;   // флаг для проверка корректности
+    int command = 0;          // код команды
+    int element = 0;          // элемент, с которым нужно выполнять действия
+    int return_element = 0;   // возвращаемый элемент
 
     for (size_t i = 0; i < n; i++)
     {
-        cin >> cmd >> element;
+        cin >> command >> element;
 
-        switch (cmd)
+        switch (command)
         {
             // положить в начало
             case 1:
-                deq.pushFront(element);
+                deque.pushFront(element);
                 break;
 
             // вернуть первый элемент
             case 2:
-                return_pop = deq.popFront();
+                return_element = deque.popFront();
                 // проверка на ошибку
-                if (element != return_pop)
-                    flag = false;
+                if (element != return_element)
+                    is_correct = false;
                 break;
 
             // положить последний элемент
             case 3:
-                deq.pushBack(element);
+                deque.pushBack(element);
                 break;
 
             // вернуть последний элемент
             case 4:
-                return_pop = deq.popBack();
+                return_element = deque.popBack();
                 // проверка на ошибку
-                if (element != return_pop)
-                    flag = false;
+                if (element != return_element)
+                    is_correct = false;
                 break;
 
             default:
@@ -235,7 +235,7 @@ int main()
         }
     }
 
-    if (flag)
+    if (is_correct)
         cout << "YES";
     else
         cout << "NO";

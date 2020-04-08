@@ -11,7 +11,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6c4eada-d51e-436f-a0ff-7bfd59983055" name="Default Changelist" comment="" />
+    <list default="true" id="f6c4eada-d51e-436f-a0ff-7bfd59983055" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_5_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_5_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_7_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_7_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_7_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_7_3/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
