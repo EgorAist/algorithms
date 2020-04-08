@@ -31,12 +31,12 @@
 #include <iostream>
 #include <cassert>
 
-// Куча, реализованная с помощью массива
+// Куча, реализованная с помощью массива (MinHeap)
 class Heap {
 private:
-    int *buffer;
-    int buffer_capacity;
-    int buffer_size;
+    int *buffer;         //буфер для хранения элементов кучи
+    int buffer_capacity; //вместимость буфера
+    int buffer_size;     //реальный размер буфера
 
 public:
     explicit Heap(int size);
@@ -58,15 +58,18 @@ int main() {
 
     std::cin >> elements_count;
     assert(elements_count > 0);
+    //считываем количество вводимых элементов, создаем кучу соответствующей вместимости
     Heap heap(elements_count);
 
     int number = 0;
 
     for(int i = 0; i < elements_count; ++i) {
+        //считываем элементы кучи и вставляем их в кучу
         std::cin >> number;
         heap.insert(number);
     }
 
+    //выполняем поиск минимального времени сложения (сумма элементов кучи)
     std::cout << getMinTime(&heap);
 
     return 0;
@@ -81,10 +84,11 @@ Heap::~Heap() {
     delete [] buffer;
 }
 
-
+//извлекаем корневой элемент
 int Heap::extractRoot() {
     int tmp = buffer[0];
-
+     
+    //на место корневого элемента ставим последний элемент в куче и сортируем ее в правильном порядке 
     buffer[0] = buffer[buffer_size -  1];
     std::swap(buffer[0], buffer[--buffer_size]);
     siftDown(0);
@@ -95,7 +99,7 @@ int Heap::extractRoot() {
 void Heap::siftDown(int index) {
     int left = 2 * index + 1;
     int right = 2 * index + 2;
-    // Ищем меньшего сына, если такой есть.
+    // Поскольку в нашем случае используется min heap, мы ищем меньшего сына, если такой есть.
     int least = index;
 
     if(left < buffer_size && buffer[left] < buffer[index])
@@ -124,6 +128,7 @@ void Heap::siftUp(int index) {
     }
 }
 
+//добавление элемента в кучу
 void Heap::insert(int element) {
     buffer[buffer_size] = element;
     siftUp(buffer_size);
@@ -134,17 +139,17 @@ int Heap::getBufferSize() {
     return buffer_size;
 }
 
-//Расчет времени
+//Расчет минимального времени для подсчета суммы 
 int getMinTime(Heap *heap)
 {
-    int time = 0;
-    int Sum = 0;
+    int time = 0; //затраченное время
+    int sum = 0; //промежуточная сумма
 
     while (heap->getBufferSize() > 1) {
-        Sum = heap->extractRoot();
-        Sum += heap->extractRoot();
-        heap->insert(Sum);
-        time += Sum;
+        sum = heap->extractRoot(); //достаем первый элемент
+        sum += heap->extractRoot(); //достаем второй элемент и суммируем оба
+        heap->insert(sum); //полученную сумму добавляем в кучу и сортируем ее
+        time += sum; //затраченное на подсчет время увеличивается на полученную сумму 
     }
 
     return time;
