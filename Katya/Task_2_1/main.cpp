@@ -37,9 +37,11 @@ int main() {
     int *array_A = new int[N];
     int *array_B = new int[M];
 
+    //считываем количество элементов в массивах A и B, после чего считываем элементы первого массива
     for (int i = 0; i < N; i++)
         cin >> array_A[i];
 
+    //для каждого считываемого элемента второго массива ищем ближайшее минимальное значение
     for (int i = 0; i < M; i++)
     {
         cin >> array_B[i];
@@ -55,21 +57,29 @@ int main() {
 
 int findNearestMinValue(const int *array_A, int element, int N)
 {
+    //обработка частных случаев
+    
+    //если обрабатываемый элемент меньше первого элемента в отсортированном массиве,
+    //то ближайшим минимальным значеением является первый элемент
     if (element <= array_A[0])
         return 0;
 
-
+    //если обрабатываемый элемент больше последнего элемента в отсортированном массиве,
+    //то ближайшим минимальным значеением является последний элемент
     if (element > array_A[N - 1])
         return N;
 
+   //обработка общего случая
    int start = 0, end = N;
 
+   //определяем диапазон для вызова в нем бинарного поиска
    while (array_A[start] < element)
        start++;
 
    return binarySearch(array_A, start, end, element);
 }
 
+//реализация бинарного поиска
 int binarySearch(const int *array, int start, int end, int element) {
     int middle = 0;
     while (start != end) {
