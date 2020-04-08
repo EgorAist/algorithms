@@ -48,21 +48,22 @@ public:
 
     void print_deque() const;
 private:
-    int tail;
-    int head;
+    int tail; //хвостовой элемент
+    int head; //головной элемент
 
-    T *buffer;
-    size_t capacity;
-    size_t size;
+    T *buffer; //буфер для хранения элементов
+    size_t capacity; //вместимость буфера
+    size_t size; //количество реально хранимых элементов
 
 
     void resize();
 };
 
+//конструктор для дека
 template <typename T>
 Deque<T>::Deque(): head{0}, tail{0} {
-    buffer = new T[MIN_SIZE];
-    capacity = MIN_SIZE;
+    buffer = new T[MIN_SIZE]; //выделяем память для буфера
+    capacity = MIN_SIZE; 
     size = 0;
 }
 
@@ -71,12 +72,13 @@ Deque<T>::~Deque() {
     delete [] buffer;
 }
 
+//проверка дека на пустоту
 template <typename T>
 bool Deque<T>::isEmpty() {
     return !size;
 }
 
-
+//вставка элемента в tail
 template <typename T>
 void Deque<T>::push_back(const T &element) {
     if (size + 1 > capacity)
@@ -87,7 +89,7 @@ void Deque<T>::push_back(const T &element) {
     tail = (tail + 1) % capacity;
 }
 
-
+//вставка элемента в head
 template <typename T>
 void Deque<T>::push_front(const T &element) {
     if (size + 1 > capacity)
@@ -98,7 +100,7 @@ void Deque<T>::push_front(const T &element) {
     size++;
 }
 
-
+//извлечение элемента из head
 template <typename T>
 T Deque<T>::pop_front() {
     if (isEmpty())
@@ -110,7 +112,7 @@ T Deque<T>::pop_front() {
     return return_element;
 }
 
-
+//извлечение элмента из tail
 template <typename T>
 T Deque<T>::pop_back() {
     if (isEmpty())
@@ -121,18 +123,18 @@ T Deque<T>::pop_back() {
     return buffer[tail];
 }
 
-
+//изменяем размер буфера при недостатке памяти для добавления нового элемента
 template <typename T>
 void Deque<T>::resize() {
     size_t newCapacity = capacity * MEM_INCREASE;
-    T *tmp = new T[newCapacity];
+    T *tmp = new T[newCapacity]; //выделяем память
 
+    //копируем содержимое дека
     if (head < tail) {
         std::copy(buffer + head, buffer + tail, tmp + head);
     }
     else {
-        /* Поскольку буфер зацикленный, tail может распологаться в начале массива, соответственно он может быть меньше head
-         * В этом случае расширяем зациленный буфер и поэтому копируем его частями */
+        // копируем кусками зацикленный буфер, в котором tail опередил head 
         std::copy(buffer + head, buffer + capacity, tmp + head);
         std::copy(buffer, buffer + tail, tmp + capacity);
         tail = capacity + tail;
@@ -143,6 +145,7 @@ void Deque<T>::resize() {
     buffer = tmp;
 }
 
+//отладочная функция красивого рисования дека :)
 template <typename T>
 void Deque<T>::print_deque() const {
     std::cout << "head: " << head << "; tail: " << tail << std::endl;
@@ -183,7 +186,8 @@ int main() {
 
     for (size_t i = 0; i < n; i++) {
         std::cin >> cmd >> element;
-
+        //считываем пользовательскую команду и вызываем соответствующий метод
+        
         switch (cmd) {
             case 1:
                 deq.push_front(element);
@@ -191,7 +195,7 @@ int main() {
             case 2:
                 ret_pop = deq.pop_front();
                 if (element != ret_pop)
-                    flag = false;
+                    flag = false; //извлеченный элемент не соответствует введенному 
                 break;
             case 3:
                 deq.push_back(element);
@@ -199,7 +203,7 @@ int main() {
             case 4:
                 ret_pop = deq.pop_back();
                 if (element != ret_pop)
-                    flag = false;
+                    flag = false; //извлеченный элемент не соответствует введенному 
                 break;
             default:
                 break;
@@ -209,7 +213,7 @@ int main() {
     if (flag)
         std::cout << "YES";
     else
-        std::cout << "NO";
+        std::cout << "NO"; //выводим, если хотя бы одно ожидаемое значение не не оправдалось
 
     return 0;
 }
