@@ -27,7 +27,7 @@
 using namespace std;
 
 #define MIN_SIZE 10
-#define MEM_INCREASE 2
+#define MULTIPLY_BY_TWO 2
 
 template <typename T>
 // дек - это двусторонняя очередь
@@ -157,7 +157,7 @@ void Deque<T>::resize()
 {
     // новое количество элементов в буфере -
     // это старое количество * 2
-    size_t new_buf_size = buf_size * MEM_INCREASE;
+    size_t new_buf_size = buf_size * MULTIPLY_BY_TWO;
 
     // выделяем память под новый буфер
     T *tmp = new T[new_buf_size];
