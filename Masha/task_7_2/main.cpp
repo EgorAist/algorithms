@@ -1,4 +1,5 @@
 #include <iostream>
+#include <assert.h>
 using namespace std;
 
 /*
@@ -7,7 +8,8 @@ using namespace std;
  Дан массив неотрицательных целых 64-битных чисел. Количество чисел не больше 106.
  Отсортировать массив методом поразрядной сортировки LSD по байтам.
 
- */
+
+*/
 
 
 // получаем n-ый байт числа
@@ -32,7 +34,6 @@ void countingSort(long long *data, size_t size, const size_t n)
     for(size_t i = 1; i < 256; i++)
         counters[i] += counters[i - 1];
 
-
     // массив для результатов
     long long *tmp = new long long[size];
 
@@ -40,7 +41,7 @@ void countingSort(long long *data, size_t size, const size_t n)
     for(size_t i = size - 1; ; i--)
     {
         tmp[--counters[getByte(data[i], n)]] = data[i];
-        if(i == 0)
+        if (i == 0)
             break;
     }
 
@@ -54,26 +55,41 @@ void countingSort(long long *data, size_t size, const size_t n)
 // сортировка LSD
 void LSDSort(long long *data, size_t size)
 {
+    // количество байт - это размерность long long
     size_t totalBytes = sizeof(long long);
 
     for(size_t byte = 0; byte < totalBytes; byte++)
         countingSort(data, size, byte);
 }
 
+
 int main()
 {
+    // количество элементов в массиве
     size_t n = 0;
     cin >> n;
+    // проверка на количество элементов в массиве
+    assert(n >= 0);
 
+    // выделение памяти под массив
     long long *data = new long long[n];
-    for(size_t i = 0; i < n; i++)
-        cin >> data[i];
 
+    // заполнение массива элементами
+    for(size_t i = 0; i < n; i++)
+    {
+        cin >> data[i];
+        // проверка условия на неотрицательность элементов массива
+        assert(i >= 0);
+    }
+
+    // сортировка LSD
     LSDSort(data, n);
 
+    // вывод элементов отсортированного массива через пробел
     for(size_t i = 0; i < n; i++)
         cout << data[i] << " ";
 
+    // очистка памяти
     delete []data;
 
     return 0;
