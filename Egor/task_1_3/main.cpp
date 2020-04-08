@@ -23,7 +23,7 @@ int main()
     cin >> size_arr_A;
 
     // проверка размера массива A
-    assert(size_arr_A > 0);
+    assert(size_arr_A > 0 && size_arr_A <= 100000);
 
     // выделяем память под массива А
     int *arr_A = new int[size_arr_A];
@@ -37,7 +37,7 @@ int main()
     cin >> size_arr_B;
 
     // проверка размера массива В
-    assert(size_arr_B > 0);
+    assert(size_arr_B > 0 && size_arr_B <= 100000);
 
     // выделяем память под массив В
     int *arr_B = new int[size_arr_B];
@@ -65,7 +65,6 @@ int main()
 }
 
 
-
 int findCountCoincidence(int size_arr_A, int *arr_A,
                          int size_arr_B, int *arr_B,
                          const int compare_element)
@@ -74,28 +73,35 @@ int findCountCoincidence(int size_arr_A, int *arr_A,
         j = 0,
         i = 0;      // итераторы
 
+    // если самые большие элементы из массивов А и В меньше,
+    // чем k, то кол-во совпадений 0
+    if(arr_A[size_arr_A - 1] + arr_B[size_arr_B - 1] < compare_element)
+        return count_coincidence;
+
     // если размер массива A <= В
     if (size_arr_A <= size_arr_B)
     {
-        for (i = size_arr_B - 1; i >= 0;)
+        for (j = size_arr_B - 1; j >= 0;)
         {
-            /* если A[j] + B[i] < k, то переходим
+            /* если A[i] + B[j] < k, то переходим
                к следующему элементу из массива А */
-            if (arr_B[i] + arr_A[j] < compare_element)
-                j++;
+            if (arr_A[i] + arr_B[j]  < compare_element)
+                i++;
 
-            /* если A[j] + B[i] = k, то количество совпадений +1,
-               переходим к предыдущему элементу в массиве В */
-            if (arr_B[i] + arr_A[j] == compare_element)
+            /* если A[i] + B[j] = k, то количество совпадений +1,
+               переходим к предыдущему элементу в массиве В
+               и к следующему элементу в массиве А*/
+            if (arr_A[i] + arr_B[j] == compare_element)
             {
-                i--;
+                i++;
+                j--;
                 count_coincidence++;
             }
 
-            /* если А[j] + В[i] > k, то переходим
+            /* если А[i] + В[j] > k, то переходим
                к предыдущему элементу в массиве В */
-            if (arr_B[i] + arr_A[j] > compare_element)
-                i--;
+            if (arr_A[i] + arr_B[j] > compare_element)
+                j--;
         }
     }
     // если размер массива A > В
@@ -103,16 +109,24 @@ int findCountCoincidence(int size_arr_A, int *arr_A,
     {
         for (i = size_arr_A - 1; i > 0;)
         {
+            // если A[i] + B[j] < k, то переходим
+            // к следующему элементу в массиве В
             if (arr_A[i] + arr_B[j] < compare_element)
                 j++;
 
-            if (arr_A[i] == (compare_element - arr_B[j]))
+            // если A[i] + B[j] = k, то кол-во совпадений +1
+            // к предыдущему элементу в массиве А и
+            // к следующему элементу в массиве В
+            if (arr_A[i]  + arr_B[j] == compare_element)
             {
-                count_coincidence++;
                 i--;
+                j++;
+                count_coincidence++;
             }
 
-            if (arr_A[i] > (compare_element - arr_B[j]))
+            // если A[i] + B[j] > k, то переходим к
+            // предыдущему элементу в массиве А
+            if (arr_A[i] + arr_B[j] > compare_element)
                 i--;
         }
     }
