@@ -1,168 +1,209 @@
-#include <iostream>
-#include <vector>
-
-/*
-                            Задача 4_1
-
- Вовочка ест фрукты из бабушкиной корзины. В корзине лежат фрукты разной массы.
- Вовочка может поднять не более K грамм. Каждый фрукт весит не более K грамм.
- За раз он выбирает несколько самых тяжелых фруктов, которые может поднять одновременно,
- откусывает от каждого половину и кладет огрызки обратно в корзину. Если фрукт весит
- нечетное число грамм, он откусывает большую половину. Фрукт массы 1гр он съедает полностью.
-
- Определить за сколько подходов Вовочка съест все фрукты в корзине.
+/**
+Жадина.
+Вовочка ест фрукты из бабушкиной корзины. В корзине лежат фрукты разной массы. Вовочка может поднять не более K грамм. Каждый фрукт весит не более K грамм. За раз он выбирает несколько самых тяжелых фруктов, которые может поднять одновременно, откусывает от каждого половину и кладет огрызки обратно в корзину. Если фрукт весит нечетное число грамм, он откусывает большую половину. Фрукт массы 1гр он съедает полностью. Определить за сколько подходов Вовочка съест все фрукты в корзине.
+Формат входных данных. Вначале вводится n ­ количество фруктов и n строк с массами фруктов.
+Затем K ­ "грузоподъемность".
+Формат выходных данных. Неотрицательное число ­ количество подходов к корзине.
 */
 
-template <typename T>
+#include <iostream>
+#include <cstring>
+#include <assert.h>
+#include <vector>
 
-struct max_prior_queue
-{
-    max_prior_queue() {}
+// сравнение с помощью оператора <
+template <class T>
+bool isLess(const T &obj1, const T &obj2) {
+    return obj1 < obj2;
+}
 
-    void push(const T value)
-    {
-        data_.push_back(value);
-        move_up(data_.size() - 1);
-    }
-
-    const T top()
-    {
-        if (data_.size() == 0)
-            return T();
-
-        T max_val = data_.at(0);
-        data_.at(0) = data_.at(data_.size() - 1);
-        data_.pop_back();
-
-        if (data_.size() == 0)
-            return max_val;
-
-        moveDown(0);
-
-        return max_val;
-    }
-
-    const T viewTop() const
-    {
-        if (data_.size() == 0)
-            return T();
-        else
-            return data_.at(0);
-    }
-
-    bool isEmpty() const
-    {
-        return data_.size() == 0;
-    }
-
+// КУЧА <тип элемента, функция для сравнения на меньше>
+template <class T, bool (*lessFunc)(const T &, const T &)>
+class Heap {
 private:
-    std::vector<T> data_;
+    T* _buffer; // выделенная память
+    size_t _size; // количество элементов в куче
+    size_t _bufferSize; // количество элементов, на которые выделена память
 
-    void move_up(unsigned int pos)
-    {
-        if (pos == 0)
-            return;
-
-        unsigned int parent_pos = pos / 2;
-
-        if (data_.at(parent_pos) > data_.at(pos))
-            return;
-
-        T temp = data_.at(pos);
-        data_.at(pos) = data_.at(parent_pos);
-        data_.at(parent_pos) = temp;
-
-        move_up(parent_pos);
+public:
+    // конструктор [количество элементов]
+    Heap(size_t dataSize = 0): _buffer(NULL), _size(0), _bufferSize(0) {
+        growSize(dataSize);
     }
 
-    void moveDown(unsigned int pos)
-    {
-        unsigned int child_1 = 2 * pos,
-                     child_2 = 2 * pos + 1;
+    // конструктор [неотсортированный массив, количество элементов]
+    Heap(const T *data, size_t size) : _buffer(NULL), _size(0), _bufferSize(0) {
+        growSize(size);
+        memcpy(&_buffer[0], &data[0], sizeof(T) * size);
+        _size = size;
 
-        if(child_1 > (data_.size() - 1))
-            return;
-
-        if(child_2 > (data_.size() - 1))
-        {
-            if(data_.at(pos) > data_.at(child_1))
-                return;
-
-            T temp = data_.at(pos);
-            data_.at(pos) = data_.at(child_1);
-            data_.at(child_1) = temp;
-
-            return;
+        // превращаем неотсортированный массив в кучу за линейное время
+        for (int i = size/2 - 1; i >= 0; --i) {
+            siftDown(i);
         }
-        else
-        {
-            if (data_.at(pos) >= data_.at(child_1) && data_.at(pos) >= data_.at(child_2))
-                return;
-            else
-            {
-                unsigned int pos_to_swap = data_.at(child_1) > data_.at(child_2) ? child_1 : child_2;
+    }
 
-                T temp = data_.at(pos);
-                data_.at(pos) = data_.at(pos_to_swap);
-                data_.at(pos_to_swap) = temp;
+    // деструктор
+    ~Heap() {
+        delete[] _buffer;
+    }
 
-                moveDown(pos_to_swap);
+    // получаем кол-во элементов в куче
+    size_t getSize() {
+        return _size;
+    }
+
+    // выделение памяти
+    void growSize(size_t n = 0) {
+        if(n < _bufferSize) return;
+
+        size_t newBufferSize = (n > 0) ? n : 5;
+
+        T *newBuffer = new T[newBufferSize];
+
+        for(size_t i = 0; i < _size; i++) {
+            newBuffer[i] = _buffer[i];
+        }
+
+        delete[] _buffer;
+        _buffer = newBuffer;
+        _bufferSize = newBufferSize;
+    }
+
+    // возвращает значение с вершины кучи, НЕ УДАЛЯЯ его из кучи
+    T peek() {
+        assert(_size > 0);
+        return _buffer[0];
+    }
+
+    // возвращает значение с вершины кучи, УДАЛЯЯ его из кучи
+    T popPeek() {
+        assert(_size > 0);
+        T elem = _buffer[0];
+
+        _size--;
+        if(_size > 0) {
+            std::swap(_buffer[0], _buffer[_size]);
+            siftDown(0);
+        }
+
+        return elem;
+    }
+
+    // добавляем элемент в кучу
+    void insert(T elem){
+        if(_bufferSize == _size) {
+            growSize(_bufferSize * 2);
+        }
+
+        _buffer[_size] = elem;
+        siftUp(_size);
+        _size++;
+    }
+
+    // проталкиваем элемент вверх
+    void siftUp(size_t index) {
+        size_t parent = ((int) index - 1) / 2;
+        while(lessFunc(_buffer[parent], _buffer[index])) {
+            // если потомок > своего бати, то меняем их местами
+            std::swap(_buffer[index], _buffer[parent]);
+            index = parent;
+        }
+    }
+
+    // проталкиваем элемент вниз
+    void siftDown(size_t index) {
+        while(2 * index + 1 < _size) {
+            size_t left = index * 2 + 1; // индекс левого потомка
+            size_t right = left + 1; // индекс правого потомка
+            size_t k = left; // индекс наибольшего из потомков
+            if (right < _size && lessFunc(_buffer[left], _buffer[right])) {
+                ++k;
             }
+            if (lessFunc(_buffer[index], _buffer[k])) { // батя меньше потомка
+                // меняем местами батю и потомка
+                std::swap(_buffer[k], _buffer[index]);
+                index = k;
+            } else {
+                break;
+            }
+        }
+    }
+
+    // вывод содержимого кучи
+    void show() {
+        for(size_t i = 0; i < _size; i++) {
+            std::cout << _buffer[i] << std::endl;
         }
     }
 };
 
+// считаем количество шагов для поедания парнем фруктов
+template <class T>
+int countEatingSteps(T *fruits, size_t left, size_t right, T maxWeight) {
+    int steps = 0; // количество шагов
 
-int main()
-{
-    int fructs_count = 0;
-    std::cin >> fructs_count;
+    // превращаем фрукты в кучу фруктов
+    Heap<T, isLess> fruitsHeap(fruits + left, right);
 
-    max_prior_queue<int> queue;
+    // временный буфер
+    std::vector<T> buffer;
 
-    while (fructs_count > 0)
-    {
-        int value = 0;
-        std::cin >> value;
+    T curWeight = 0, // вес текущего фрукта
+      totalWeight = 0; // вес фруктов на текущем шаге
 
-        queue.push(value);
-        --fructs_count;
-    }
+    while(true) {
+        // взяли фрукт
+        curWeight = fruitsHeap.getSize() > 0 ? fruitsHeap.peek() : 0;
 
-    int max_weight = 0;
-    std::cin >> max_weight;
-
-    std::vector<int>fructs;
-
-    int steps_count = 0;
-
-    while (!queue.isEmpty())
-    {
-        int current_weight = 0;
-
-        int fruct = queue.top();
-        fructs.push_back(fruct);
-        current_weight += fruct;
-
-        while (!queue.isEmpty())
-        {
-            int next_fruct = queue.viewTop();
-            if (current_weight + next_fruct > max_weight)
-                break;
-            else
-            {
-                fructs.push_back(queue.top());
-                current_weight += next_fruct;
+        if(fruitsHeap.getSize() > 0 && totalWeight + curWeight <= maxWeight) {
+            // парень может взять текущий фрукт
+            totalWeight += fruitsHeap.popPeek();
+            if(curWeight != 1) {
+                // съел, половину оставил
+                buffer.push_back(curWeight / 2);
             }
         }
-        ++steps_count;
+        else
+        {
+            // больше взять фруктов не может
+            while(buffer.size() > 0) {
+                fruitsHeap.insert(buffer.back());
+                buffer.pop_back();
+            }
+            totalWeight = 0;
+            steps++;
+        }
 
-        for (auto fr : fructs)
-            if (fr > 1) queue.push(fr / 2);
-
-        fructs.clear();
+        // фрукты в корзине закончились
+        if(fruitsHeap.getSize() == 0 && buffer.size() == 0){
+            steps++;
+            break;
+        }
     }
-    
-    std::cout << steps_count << std::endl;
+
+    return steps;
+}
+
+int main() {
+    int fruitsCount = 0; // количество фруктов
+    std::cin >> fruitsCount;
+
+    // сохраняем фрукты
+    int *fruits = new int[fruitsCount];
+    for(size_t i = 0; i < fruitsCount; i++) {
+        std::cin >> fruits[i];
+    }
+
+    int maxWeight = 0; // "грузоподъемность" парня
+    std::cin >> maxWeight;
+
+    // считаем кол-во шагов для поедания фруктов
+    int steps = countEatingSteps(fruits, 0, fruitsCount, maxWeight);
+
+    std::cout << steps << std::endl;
+
+    delete[] fruits;
+
     return 0;
 }
