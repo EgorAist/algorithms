@@ -11,7 +11,40 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee3d23f2-5b14-4d68-b933-e0755a313371" name="Default Changelist" comment="" />
+    <list default="true" id="ee3d23f2-5b14-4d68-b933-e0755a313371" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Egor/task_3_2/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Egor/task_3_2/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_2_2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_2_2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/3.15.3/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/Task_3_2.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/Task_3_2" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/Task_3_2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/Task_3_2.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/Task_3_2.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Egor/task_3_2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Egor/task_3_2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_1_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_1_3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_1_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_1_4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_2_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_2_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_2_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_2_4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_4_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_4_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_4_3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_4_3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_5_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_5_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_6_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_6_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_6_4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_6_4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../task_7_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../task_7_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +54,11 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1Zx8sn8ArE9DLxaA1UO2LfYZ0kU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -30,6 +67,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Egor/task_3_2" />
   </component>
   <component name="RunManager">
     <configuration name="task_7_3" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="task_7_3" TARGET_NAME="task_7_3" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="task_7_3" RUN_TARGET_NAME="task_7_3">
@@ -51,6 +89,7 @@
       <workItem from="1585769594859" duration="4220000" />
       <workItem from="1586017653805" duration="599000" />
       <workItem from="1586092955731" duration="599000" />
+      <workItem from="1586330699899" duration="629000" />
     </task>
     <servers />
   </component>
@@ -58,6 +97,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="729" y="257" width="530" height="598" key="FileChooserDialogImpl" timestamp="1586330727348">
+      <screen x="79" y="34" width="1841" height="1046" />
+    </state>
+    <state x="729" y="257" width="530" height="598" key="FileChooserDialogImpl/79.34.1841.1046@79.34.1841.1046" timestamp="1586330727348" />
     <state width="1785" height="263" key="GridCell.Tab.0.bottom" timestamp="1585770375335">
       <screen x="79" y="34" width="1841" height="1046" />
     </state>

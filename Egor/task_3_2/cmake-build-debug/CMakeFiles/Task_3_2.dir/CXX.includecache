@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/ekaterina/CLionProjects/A_i_SD/HW__1/Task_3_2/main.cpp
+/home/egor/tehnopark/algorithms/Egor/task_3_2/main.cpp
 iostream
+-
+cassert
 -
 
