@@ -22,9 +22,11 @@
 #include <vector>
 
 // Куча, реализованная с помощью массива
+template <typename T, typename Comparator>
 class maxHeap {
 private:
-    int *buffer;        //буфер для хранения данных
+    T * buffer;
+    //int *buffer;        //буфер для хранения данных
     int buffer_capacity; //вместимость буфера (выделенная память)
     int buffer_size;    //количество элементов, реально хранимых в буфере
 
@@ -32,11 +34,13 @@ public:
     explicit maxHeap(int size);
     ~maxHeap() = default;
 
-    int extractRoot();
-    int peekRoot();
+    T extractRoot();
+    //int extractRoot();
+    T peekRoot();
     void siftUp(int index);
     void siftDown(int index);
-    void insert(int element);
+    // void insert(int element);
+    void insert(T element);
 
     void printHeap();
     int getBufferSize();
@@ -49,6 +53,7 @@ int main() {
 
     int fruit_count = 0;
     std::cin >> fruit_count;            //считываем количество фруктов в корзине
+
 
     int *fruits = new int[fruit_count];
     for (int i = 0; i < fruit_count; i++)
@@ -66,8 +71,7 @@ int main() {
 
 
 int CountSteps(int fruit_count, int *fruits, int max_weight) {
-
-    maxHeap fruits_heap(fruit_count);
+    maxHeap<int, std::greater<>> fruits_heap(fruit_count);
 
     //создаем кучу Max Heap из значений масс фруктов
     for (int i = 0; i < fruit_count; i++)
@@ -121,13 +125,14 @@ int CountSteps(int fruit_count, int *fruits, int max_weight) {
     return count_steps;
 }
 
-
-maxHeap::maxHeap(int size): buffer_capacity(size), buffer_size(0) {
+template <typename T, typename Comparator>
+maxHeap<T, Comparator>::maxHeap(int size): buffer_capacity(size), buffer_size(0) {
     buffer = new int[buffer_capacity];
 }
 
 // извлечение корневого (максимального) элемента кучи
-int maxHeap::extractRoot() {
+template <typename T, typename Comparator>
+T maxHeap<T, Comparator>::extractRoot() {
     int tmp = buffer[0];
     std::swap(buffer[0], buffer[--buffer_size]);
     siftDown(0); //создаем кучу из неупорядоченного массива данных
@@ -136,21 +141,26 @@ int maxHeap::extractRoot() {
 }
 
 // получаем значение корневого элемента в куче без его удаления
-int maxHeap::peekRoot() {
+template <typename T, typename Comparator>
+T maxHeap<T, Comparator>::peekRoot() {
     return buffer[0];
 }
 
 // проталкивание элемента вниз
-void maxHeap::siftDown(int index) {
+template <typename T, typename Comparator>
+void maxHeap<T, Comparator>::siftDown(int index) {
+    Comparator cmp = Comparator();
     int left = 2 * index + 1;
     int right = 2 * index + 2;
     // Ищем большего сына, если такой есть.
     int largest = index;
 
-    if(left < buffer_size && buffer[left] > buffer[index])
+    if(left < buffer_size && cmp(buffer[left], buffer[index]))
+   // if(left < buffer_size && buffer[left] > buffer[index])
         largest = left;
 
-    if(right < buffer_size && buffer[right] > buffer[largest])
+    if(right < buffer_size && cmp(buffer[right], buffer[largest]))
+    //if(right < buffer_size && buffer[right] > buffer[largest])
         largest = right;
 
     // Если больший сын есть, то проталкиваем корень в него.
@@ -161,33 +171,46 @@ void maxHeap::siftDown(int index) {
 }
 
 // проталкивание элемента вверх
-void maxHeap::siftUp(int index) {
+template <typename T, typename Comparator>
+void maxHeap<T, Comparator>::siftUp(int index) {
+    Comparator cmp = Comparator();
     int parent;
 
     while(index > 0) {
         parent = (index - 1) / 2;
 
-        if(buffer[index] <= buffer[parent])
+        if(cmp(buffer[index], buffer[parent])) {
+            std::swap(buffer[index], buffer[parent]);
+            index = parent;
+        }
+
+        return;
+
+
+       /* if(buffer[index] <= buffer[parent])
             return;
 
         std::swap(buffer[index], buffer[parent]);
-        index = parent;
+        index = parent;*/
     }
 }
 
 // добавление нового элемента в кучу
-void maxHeap::insert(int element) {
+template <typename T, typename Comparator>
+void maxHeap<T, Comparator>::insert(T element) {
     buffer[buffer_size] = element;
     siftUp(buffer_size);
     buffer_size++;
 }
 
 // получение количества хранимых в куче элементов
-int maxHeap::getBufferSize() {
+template <typename T, typename Comparator>
+int maxHeap<T, Comparator>::getBufferSize() {
     return buffer_size;
 }
 
-void maxHeap::printHeap() {
+template <typename T, typename Comparator>
+void maxHeap<T, Comparator>::printHeap() {
     for (int i = 0; i < buffer_size; i++)
         std::cout << buffer[i] << " ";
     std::cout << std::endl;
